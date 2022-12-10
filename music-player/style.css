@@ -232,7 +232,16 @@ h3 {
   }
 
   .img-container {
-    left: 29px;
+    left: 20px;
+  
+  }
+  
+  .img-container img {
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+    border-radius: 50%;
+    box-shadow: 0 5px 30px 5px rgba(0, 0, 0, 0.5);
   }
 
   h2 {
@@ -245,6 +254,13 @@ h3 {
 
   .player-controls {
     top: -10px;
-    left: 100px;
+    left: 15px;
+    width: 100%;
+    max-width: 30em;
+
+  }
+
+  .fas {
+    font-size: 20px;
   }
 }
