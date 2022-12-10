@@ -229,10 +229,11 @@ h3 {
 @media screen and (max-width: 376px) {
   .player-wrappers {
     width: 90vw;
+    margin: 0 2em;
   }
 
   .img-container {
-    left: 20px;
+    left: 14px;
   
   }
   
