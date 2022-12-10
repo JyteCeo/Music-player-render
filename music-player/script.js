@@ -9,6 +9,15 @@ const progressContainer = document.getElementById('progress-container');
 const prevBtn = document.getElementById('prev');
 const playBtn = document.getElementById('play');
 const nextBtn = document.getElementById('next');
+const wave = document.getElementById('wave');
+const track_art = document.querySelector('.img-container');
+const volume_slider = document.querySelector('.volume_slider');
+const repeat = document.querySelector('.repeat')
+let randomIcon = document.querySelector('.fa-random');
+
+
+
+
 
 // Music
 const songs = [
@@ -34,10 +43,30 @@ const songs = [
   },
   {
     name: 'Controlla Obuduboi',
-    displayName: 'Contolla',
+    displayName: 'Controlla',
     artist: 'Obuduboi',
   },
 ];
+
+
+function randomSong() {
+  let songLength = songs.length
+
+  for (let i = 0; i < songLength; i++) {
+
+    Math.floor(Math.random() * songLength) + 1;
+    playSong()
+  }
+}
+
+function repeatTrack() {
+  loadSong(songs[songIndex]);
+  playSong();
+}
+
+function setVolume() {
+  music.volume = volume_slider.value / 100;
+}
 
 // Check if Playing
 let isPlaying = false;
@@ -47,6 +76,8 @@ function playSong() {
   isPlaying = true;
   playBtn.classList.replace('fa-play', 'fa-pause');
   playBtn.setAttribute('title', 'Pause');
+  track_art.classList.add('rotate');
+  wave.classList.add('loader');
   music.play();
 }
 
@@ -56,6 +87,8 @@ function pauseSong() {
   isPlaying = false;
   playBtn.classList.replace('fa-pause', 'fa-play');
   playBtn.setAttribute('title', 'Play');
+  track_art.classList.remove('rotate');
+  wave.classList.remove('loader');
   music.pause();
 }
 
@@ -74,6 +107,8 @@ function loadSong(song) {
 
 // Current Song
 let songIndex = 0;
+
+
 
 // Previous Song
 function prevSong() {
@@ -139,4 +174,6 @@ nextBtn.addEventListener('click', nextSong);
 music.addEventListener('ended', nextSong);
 music.addEventListener('timeupdate', updateProgressBar);
 progressContainer.addEventListener('click', setProgressBar);
+repeat.addEventListener('click', repeatTrack);
+randomIcon.addEventListener('click', randomSong);
 
